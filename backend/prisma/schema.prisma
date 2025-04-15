@@ -87,8 +87,6 @@ model Company {
   name      String     @db.VarChar(100)
   employees Employee[]
   positions Position[]
-  isDeleted Boolean    @default(false)
-  deletedAt DateTime?
 }
 
 model Employee {
@@ -98,8 +96,6 @@ model Employee {
   email      String      @unique @db.VarChar(255)
   role       String      @db.VarChar(50)
   isActive   Boolean     @default(true)
-  isDeleted  Boolean     @default(false)
-  deletedAt  DateTime?
   company    Company     @relation(fields: [companyId], references: [id])
   interviews Interview[]
 }
